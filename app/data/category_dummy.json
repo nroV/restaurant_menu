@@ -1,0 +1,48 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Noodle Soup"
+        },
+        {
+            "id": 2,
+            "name": "keav & braised beef"
+        },
+        {
+            "id": 3,
+            "name": "Phõ & curry"
+        },
+        {
+            "id": 4,
+            "name": "Fried Rice"
+        },
+        {
+            "id": 5,
+            "name": "Other"
+        },
+        {
+            "id": 6,
+            "name": "Egg"
+        },
+        {
+            "id": 7,
+            "name": "Sandwich"
+        },
+        {
+            "id": 8,
+            "name": "Burger & Breakfast"
+        },
+        {
+            "id": 9,
+            "name": "Spaghetti & Salad "
+        },
+        {
+            "id": 10,
+            "name": "& More"
+        },
+        {
+            "id": 11,
+            "name": "Set Combo"
+        }
+    ]
+}
