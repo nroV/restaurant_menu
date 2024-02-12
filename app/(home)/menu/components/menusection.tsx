@@ -15,7 +15,6 @@ const MenuSectionFoods = ({
   menulists: MenuItemTypes[];
   categorieslist: CategoriesType[];
 }) => {
-
   const menuRef = useRef<HTMLDivElement | null>(null);
   const [search, setSearch] = useState<string | null>(null);
   const [menu, setMenu] = useState<MenuItemTypes[]>(menulists);
@@ -23,11 +22,11 @@ const MenuSectionFoods = ({
     useState<CategoriesType[]>(categorieslist);
   const [active, setActive] = useState(categorieslist[0].id);
 
-
   const setActiveCategory = (id: any) => {
     const categoryElement = document.getElementById(id);
     if (categoryElement) {
-      categoryElement.scrollIntoView({ behavior: "smooth" });
+      categoryElement.style.marginBottom = "20px";
+      categoryElement.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
 
@@ -36,15 +35,17 @@ const MenuSectionFoods = ({
   };
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      let sections = document.querySelectorAll(".category");
+      let sections = document.querySelectorAll(
+        ".category"
+      ) as NodeListOf<HTMLElement> | null;
 
-      console.log(window.scrollY)
+      console.log(window.scrollY);
 
-      sections.forEach((section) => {
+      sections?.forEach((section) => {
         const sectionTop = section.offsetTop;
         // console.log(sectionTop)
-        if (window.scrollY + 138 >= sectionTop) {
-          console.log('run')
+        if (window.scrollY + 326 >= sectionTop) {
+          console.log("run");
           setActive(section.getAttribute("id"));
         }
       });
@@ -66,15 +67,12 @@ const MenuSectionFoods = ({
         const categorylist = Array.from(
           new Set(item.map((cate) => cate.category_id))
         );
-     
 
         setCategories((pre) =>
           pre.filter((category) => categorylist.includes(+category.id))
         );
-        setActive(categorylist[0]+"");
+        setActive(categorylist[0] + "");
       }
-
-
     }
 
     return () => {
@@ -82,7 +80,6 @@ const MenuSectionFoods = ({
       setCategories(categorieslist);
     };
   }, [search]);
-
 
   return (
     <>
@@ -118,16 +115,14 @@ const MenuSectionFoods = ({
             {menu.map((menu, index) => {
               if (Number(item?.id) === Number(menu.category_id)) {
                 return (
-               
-                    <div
-                      className="category"
-                      key={index}
-                      ref={menuRef}
-                      id={menu.category_id + ""}
-                    >
-                      <MenuItem item={menu} />;
-                    </div>
-              
+                  <div
+                    className="category"
+                    key={index}
+                    ref={menuRef}
+                    id={menu.category_id + ""}
+                  >
+                    <MenuItem item={menu} />;
+                  </div>
                 );
               }
             })}
